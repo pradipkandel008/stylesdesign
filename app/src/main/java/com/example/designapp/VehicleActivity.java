@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class VehicleActivity extends AppCompatActivity implements View.OnClickListener {
     EditText make,year,color,price,engine;
-    String getMake,getYear,getColor,getPrice,getEngine,str1;
+    String getMake,getYear,getColor,getPrice,getEngine,str1,str2;
     Button btn_create;
     TextView setresult;
     @Override
@@ -37,14 +37,11 @@ public class VehicleActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btn_create:
-                getMake=make.getText().toString();
-                getYear=year.getText().toString();
-                getColor=color.getText().toString();
-                getPrice=price.getText().toString();
-                getEngine=engine.getText().toString();
-                str1=("Make: "+getMake+" "+"Year: "+getYear+" "+ "Color: "+getColor+" "+
-                        "Price "+getPrice+" "+"Engine: "+getEngine)+"";
-                setresult.setText(str1);
+                VehicleModel model = new VehicleModel(make.getText().toString(),
+                        year.getText().toString(),color.getText().toString(),
+                        price.getText().toString(),engine.getText().toString());
+
+                setresult.setText(setresult.getText() +"\r\n"+model.toString()+"\r\n");
 
         }
     }
